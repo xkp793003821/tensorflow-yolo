@@ -1,8 +1,1 @@
-import numbers
-import sched
-
-
-
-
-
-print('test git python 2.7')
+print('test in python2.7 mode')
