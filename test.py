@@ -1,1 +1,1 @@
-print('test in python2.7 mode')
+print('test in dev mode')
