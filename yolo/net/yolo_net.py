@@ -100,6 +100,7 @@ class YoloNet(Net):
     conv_num += 1
 
 
+
     #Fully connected layer
     local1 = self.local('local1', temp_conv, 49 * 1024, 4096)
 
@@ -125,7 +126,10 @@ class YoloNet(Net):
     """
     boxes1 = tf.pack([boxes1[:, :, :, 0] - boxes1[:, :, :, 2] / 2, boxes1[:, :, :, 1] - boxes1[:, :, :, 3] / 2,
                       boxes1[:, :, :, 0] + boxes1[:, :, :, 2] / 2, boxes1[:, :, :, 1] + boxes1[:, :, :, 3] / 2])
+    # like [cellsize,cellsize,boxpercell,[(xmin,ymin),(xmax,ymax)]] In this is [7,7,2,4]
+
     boxes1 = tf.transpose(boxes1, [1, 2, 3, 0])
+    # like [cellsize,boxpercell,[(xmin,ymin),(xmax,ymax)],cellsize]    In this is [7,2,4,7]
     boxes2 =  tf.pack([boxes2[0] - boxes2[2] / 2, boxes2[1] - boxes2[3] / 2,
                       boxes2[0] + boxes2[2] / 2, boxes2[1] + boxes2[3] / 2])
 

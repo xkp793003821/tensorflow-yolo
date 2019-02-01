@@ -99,6 +99,7 @@ class YoloTinyNet(Net):
     local3 = tf.concat([class_probs, scales, boxes], 3)
 
     predicts = local3
+    print(local3.shape)
 
     return predicts
 
